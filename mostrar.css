@@ -1,0 +1,1303 @@
+
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+   
+    :root {
+      --primary-color: #0059b3;
+      --secondary-color: #0073e6;
+      --dark-blue: #003366;
+      --light-blue: #e6f0fa;
+      --accent-color: #66ccff;
+      --white: #ffffff;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --header-height: 180px;
+    }
+
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--light-blue);
+      color: var(--dark-blue);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+   
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: var(--white);
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      position: relative;
+      height: var(--header-height);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      width: 100%;
+    }
+
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 0%, transparent 40%);
+      z-index: 1;
+    }
+
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 2;
+      letter-spacing: 1px;
+      font-weight: 700;
+      animation: fadeInDown 0.8s ease;
+    }
+
+
+    header p {
+      font-size: 1.3rem;
+      margin: 10px 0 0;
+      position: relative;
+      z-index: 2;
+      opacity: 0.9;
+      font-weight: 300;
+      max-width: 800px;
+      animation: fadeInUp 0.8s ease 0.2s both;
+    }
+
+
+    .logo-container {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      align-items: center;
+      z-index: 2;
+      animation: fadeInLeft 0.8s ease;
+    }
+
+
+    .logo-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--white);
+      margin-right: 10px;
+      box-shadow: var(--shadow);
+    }
+
+
+    .logo-text {
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: left;
+      line-height: 1.2;
+    }
+
+
+    .logo-text span {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+
+    nav {
+      background-color: var(--secondary-color);
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+      width: 100%;
+    }
+
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+
+    nav li {
+      position: relative;
+      flex-grow: 1;
+      text-align: center;
+    }
+
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 15px 0;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+
+    /* Submenú */
+    .submenu {
+      display: none;
+      position: absolute;
+      background-color: var(--white);
+      width: 100%;
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      border-radius: 0 0 5px 5px;
+      overflow: hidden;
+    }
+
+
+    .submenu a {
+      color: var(--dark-blue);
+      padding: 12px 0;
+      margin: 0;
+      transition: all 0.2s ease;
+    }
+
+
+    .submenu a:hover {
+      background-color: var(--accent-color);
+      color: var(--white);
+    }
+
+
+    nav li:hover .submenu {
+      display: block;
+    }
+
+
+    /* ----------------- MAIN ----------------- */
+    main {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      margin: 30px 20px;
+      max-width: 1200px; /* Aumentado para coincidir con la otra página */
+      width: 90%;
+      box-shadow: var(--shadow);
+      flex: 1;
+    }
+
+
+    h2 {
+      color: #004080;
+      text-align: center;
+    }
+
+
+    .search-container {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+
+    #searchInput {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+
+    .search-button {
+      padding: 10px 20px;
+      background-color: #0073e6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+
+    .search-button:hover {
+      background-color: #005bb5;
+    }
+
+
+    .action-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+
+
+    .export-button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+
+    .export-button:hover {
+      background-color: #218838;
+    }
+
+
+    .delete-button {
+      padding: 10px 20px;
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+
+    .delete-button:hover {
+      background-color: #c82333;
+    }
+
+
+    .accordion {
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+
+    .accordion-header {
+      background-color: #e6f0ff;
+      color: #004080;
+      padding: 15px;
+      cursor: pointer;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+
+    .accordion-header:hover {
+      background-color: #d0e0ff;
+    }
+
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+
+
+    .accordion-content.show {
+      max-height: 1000px;
+      transition: max-height 0.5s ease-in;
+    }
+
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0;
+    }
+
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+
+    th {
+      background-color: #e6f0ff;
+      color: #004080;
+    }
+
+
+    .search-results {
+      display: none;
+      margin-bottom: 30px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 15px;
+      background-color: #f9f9f9;
+    }
+
+
+    .search-results.show {
+      display: block;
+    }
+
+
+    .search-results h3 {
+      margin-top: 0;
+      color: #004080;
+    }
+
+
+    .no-data {
+      text-align: center;
+      padding: 20px;
+      color: #666;
+    }
+
+
+    .badge {
+      background-color: #0059b3;
+      color: white;
+      border-radius: 10px;
+      padding: 3px 8px;
+      font-size: 12px;
+      margin-left: 10px;
+    }
+
+
+    /* Estilos para el modal de eliminación */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+
+    .modal-content {
+      background-color: white;
+      margin: 15% auto;
+      padding: 20px;
+      border-radius: 5px;
+      width: 80%;
+      max-width: 500px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+
+    .modal-title {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #004080;
+    }
+
+
+    .close {
+      color: #aaa;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+
+    .close:hover {
+      color: black;
+    }
+
+
+    .modal-body {
+      margin-bottom: 20px;
+    }
+
+
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+
+    .select-item {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+
+    .delete-step {
+      display: none;
+    }
+
+
+    .delete-step.active {
+      display: block;
+    }
+
+
+    .delete-search {
+      margin-bottom: 15px;
+    }
+
+
+    .delete-search-input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+
+    .delete-table-container {
+      max-height: 300px;
+      overflow-y: auto;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+    }
+
+
+    .delete-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+
+    .delete-table th {
+      background-color: #f2f2f2;
+      position: sticky;
+      top: 0;
+    }
+
+
+    .delete-table tr:hover {
+      background-color: #f5f5f5;
+    }
+
+
+    .delete-table tr.selected {
+      background-color: #d4edff;
+    }
+
+
+    .back-button {
+      padding: 8px 15px;
+      background-color: #6c757d;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+
+    .back-button:hover {
+      background-color: #5a6268;
+    }
+
+
+    /* ----------------- FOOTER ----------------- */
+    footer {
+      background: linear-gradient(135deg, #002244, #003366);
+      color: #ffffff;
+      padding: 50px 20px 30px;
+      margin-top: 60px;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+   
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+   
+    .footer-grid {
+      display: grid;
+      grid-template-columns: auto 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 40px;
+      align-items: start;
+    }
+   
+    .footer-column {
+      padding: 0 15px;
+    }
+   
+    .footer-logo-column {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+   
+    .footer-logo {
+      margin-right: 0;
+      margin-bottom: 0;
+    }
+   
+    .footer-logo img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid var(--accent-color);
+      object-fit: cover;
+    }
+   
+    .footer-title {
+      color: var(--accent-color);
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+   
+    .footer-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--accent-color);
+    }
+   
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+   
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+   
+    .footer-links a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+   
+    .footer-links a:hover {
+      color: var(--accent-color);
+      padding-left: 5px;
+    }
+   
+    .footer-links i {
+      margin-right: 8px;
+      font-size: 0.8rem;
+    }
+   
+    .footer-contact {
+      list-style: none;
+      padding: 0;
+    }
+   
+    .footer-contact li {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: flex-start;
+    }
+   
+    .footer-contact i {
+      margin-right: 10px;
+      color: var(--accent-color);
+      margin-top: 3px;
+    }
+   
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+   
+    .footer-students {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+   
+    .footer-students span {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+   
+    .student-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+   
+    .badge {
+      background: rgba(102, 204, 255, 0.2);
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      border: 1px solid var(--accent-color);
+    }
+   
+    .footer-copyright {
+      text-align: center;
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+   
+    /* Elementos decorativos */
+    .footer-decoration {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+   
+    .square {
+      position: absolute;
+      background: rgba(102, 204, 255, 0.05);
+      border: 1px solid rgba(102, 204, 255, 0.1);
+      transform: rotate(45deg);
+    }
+   
+    .s1 {
+      width: 100px;
+      height: 100px;
+      top: -50px;
+      right: -50px;
+    }
+   
+    .s2 {
+      width: 60px;
+      height: 60px;
+      bottom: 30px;
+      left: 20%;
+    }
+   
+    .s3 {
+      width: 80px;
+      height: 80px;
+      bottom: 100px;
+      right: 15%;
+    }
+   
+    .s4 {
+      width: 40px;
+      height: 40px;
+      top: 20%;
+      left: 10%;
+    }
+   
+    .s5 {
+      width: 50px;
+      height: 50px;
+      top: 40%;
+      right: 25%;
+    }
+
+
+    /* ----------------- RESPONSIVE ----------------- */
+    @media (max-width: 768px) {
+      :root {
+        --header-height: 220px;
+      }
+     
+      header h1 {
+        font-size: 2rem;
+        padding-top: 40px;
+      }
+     
+      header p {
+        font-size: 1.1rem;
+      }
+     
+      .logo-container {
+        position: static;
+        justify-content: center;
+        margin: 10px 0;
+      }
+     
+      .logo-text {
+        display: none;
+      }
+     
+      nav ul {
+        flex-direction: column;
+      }
+     
+      nav li {
+        width: 100%;
+      }
+     
+      .submenu {
+        position: static;
+        display: none;
+        width: 100%;
+      }
+     
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+     
+      .footer-column {
+        margin-bottom: 30px;
+        text-align: center;
+      }
+     
+      .footer-logo {
+        justify-content: center;
+        margin: 0 auto 20px;
+      }
+     
+      .footer-logo img {
+        width: 80px;
+        height: 80px;
+      }
+     
+      .student-badges {
+        flex-direction: column;
+        align-items: center;
+      }
+     
+      .action-buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    /* Estilos para el botón de editar principal */
+.edit-button-main {
+  padding: 10px 20px;
+  background-color: #e97313ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.edit-button-main:hover {
+  background-color: #bd5908ff;
+}
+
+/* Estilos para botones de editar individuales */
+ 
+
+.edit-button:hover {
+  background-color: #e97313ff;
+}
+
+/* Badge con color azul oscuro */
+.badge {
+  background-color: #003366;
+  color: white;
+  border-radius: 10px;
+  padding: 3px 8px;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+/* Asegurar que el header tenga los colores correctos */
+header {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+  color: var(--white) !important;
+}
+
+/* Scrollbar para modales */
+.modal-content {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.delete-table-container {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+}
+
+/* Asegurar que los botones de acción sean visibles */
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  position: sticky;
+  bottom: 0;
+  background: white;
+  padding: 15px 0;
+  z-index: 100;
+}
+
+/* Ocultar columna de acciones en las tablas principales */
+table th:nth-child(6),
+table td:nth-child(6) {
+  display: none;
+}
+
+/* Ajustar el ancho de las columnas al ocultar acciones */
+table th:nth-child(1),
+table td:nth-child(1) { width: 20%; }
+table th:nth-child(2),
+table td:nth-child(2) { width: 25%; }
+table th:nth-child(3),
+table td:nth-child(3) { width: 15%; }
+table th:nth-child(4),
+table td:nth-child(4) { width: 15%; }
+table th:nth-child(5),
+table td:nth-child(5) { width: 25%; }
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0073e6;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0059b3;
+}
+
+
+
+
+
+
+
+/* Estilos para el modal con scroll general */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  overflow: auto; /* Permite scroll en el modal completo */
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto; /* Reducido para mejor visualización con scroll */
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 500px;
+  max-height: 85vh; /* Altura máxima para que entre en pantalla */
+  overflow-y: auto; /* Scroll en el contenido del modal */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+/* Eliminar el scroll de las tablas internas y ajustar alturas */
+.delete-table-container {
+  max-height: none; /* Quitar altura máxima */
+  overflow-y: visible; /* Quitar scroll interno */
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+}
+
+.delete-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.delete-table th {
+  background-color: #f2f2f2;
+  position: sticky;
+  top: 0;
+}
+
+.delete-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.delete-table tr.selected {
+  background-color: #d4edff;
+}
+
+/* Ajustar el modal de edición para que también tenga scroll */
+.modal-content[style*="max-width: 600px"] {
+  max-width: 600px;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+/* Asegurar que el footer del modal sea visible */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  margin-top: 15px;
+  position: sticky;
+  bottom: 0;
+  background: white;
+  z-index: 10;
+}
+
+/* Ajustar el cuerpo del modal para el scroll */
+.modal-body {
+  margin-bottom: 20px;
+  max-height: calc(85vh - 150px); /* Ajustar altura considerando header y footer */
+  overflow-y: visible; /* No scroll interno, dejar que el modal general maneje el scroll */
+}
+
+/* Scrollbar personalizada para los modales */
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #0073e6;
+  border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #0059b3;
+}
+
+/* Ajustar los pasos de eliminación para que fluyan con el scroll */
+.delete-step {
+  display: none;
+  min-height: auto; /* Quitar altura mínima fija */
+}
+
+.delete-step.active {
+  display: block;
+}
+
+/* Ajustar la tabla dentro del modal para que sea responsive */
+.delete-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.delete-table th,
+.delete-table td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+/* Asegurar que los botones sean siempre visibles */
+.modal-footer {
+  position: sticky;
+  bottom: 0;
+  background: white;
+  padding: 15px 0 0 0;
+  margin-top: 20px;
+}
+
+
+
+
+/* Estilos para el modal con scroll separado */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  overflow: auto;
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 500px;
+  max-height: 85vh;
+  overflow-y: auto; /* Scroll para el modal completo si es necesario */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contenedor principal del modal body */
+.modal-body {
+  margin-bottom: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 200px; /* Altura mínima */
+}
+
+/* Ajustar los pasos de eliminación */
+.delete-step {
+  display: none;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+}
+
+.delete-step.active {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Contenedor de la tabla con scroll interno SEPARADO */
+.delete-table-container {
+  max-height: 250px; /* Altura fija para el contenedor de tabla */
+  overflow-y: auto; /* Scroll interno para la tabla */
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  flex-shrink: 0; /* Evitar que se reduzca */
+}
+
+/* Asegurar que la tabla ocupe todo el ancho */
+.delete-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+.delete-table th {
+  background-color: #f2f2f2;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.delete-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.delete-table tr.selected {
+  background-color: #d4edff;
+}
+
+/* Footer del modal siempre visible */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  margin-top: auto; /* Empujar hacia abajo */
+  flex-shrink: 0; /* No reducir tamaño */
+  background: white;
+  position: sticky;
+  bottom: 0;
+}
+
+/* Ajustar el modal de edición para la misma estructura */
+.modal-content[style*="max-width: 600px"] {
+  max-width: 600px;
+  max-height: 85vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Formulario de edición con scroll si es necesario */
+#editForm {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 300px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  flex-shrink: 0;
+}
+
+/* Contenedor de búsqueda en el paso 2 */
+.delete-search {
+  margin-bottom: 15px;
+  flex-shrink: 0;
+}
+
+.delete-search-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Botón de volver */
+.back-button {
+  padding: 8px 15px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  flex-shrink: 0;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+}
+
+/* Mensaje de no resultados */
+.no-data {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  flex-shrink: 0;
+}
+
+/* Scrollbars personalizadas para ambos contenedores */
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #0073e6;
+  border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #0059b3;
+}
+
+.delete-table-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.delete-table-container::-webkit-scrollbar-track {
+  background: #f9f9f9;
+  border-radius: 3px;
+}
+
+.delete-table-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.delete-table-container::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    margin: 10% auto;
+    max-height: 90vh;
+  }
+  
+  .delete-table-container {
+    max-height: 200px;
+  }
+  
+  .modal-footer {
+    flex-direction: column;
+  }
+  
+  .modal-footer button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

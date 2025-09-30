@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <title>Lo veo y lo quiero</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <table>
+            <tr>
+                <td style="width: 30%; padding-left: 20px;">
+                    <!-- ...el menú y perfil ahora están arriba, deja vacío o pon logo si quieres... -->
+                </td>
+                <td style="width: 40%; text-align: center;">
+                    <a href="index.html"> <img src="https://i.imgur.com/zb6S19t.png" alt="Lo veo y lo quiero" width="350" height="150" class="logo"></a>
+                </td>
+                <td style="width: 30%; text-align: right; padding-right: 20px;">
+                    <div style="display: flex; align-items: center; justify-content: flex-end; gap: 15px;">
+                        <!-- Elimina el botón de perfil aquí -->
+                        <a href="carrito.html" title="Ver carrito" id="carritoLink">
+                            <img class="carrito-rosa" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23d23369'><path d='M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03l3.24-6.14c.25-.48.08-1.08-.4-1.34-.48-.25-1.08-.08-1.34.4L15.55 11H8.53L4.27 2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h11v-2H7l1.1-2z'/></svg>" alt="Carrito de compras rosa oscuro" width="50" height="50">
+                            <span id="contadorCarrito" style="background: #d23369; color: white; border-radius: 50%; padding: 2px 6px; position: relative; top: -15px; left: -10px; display: none;">0</span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </header>
+    
+    <form method="get" action="#">
+        <div class="search-container">
+            <!-- Menú y perfil al lado izquierdo de la barra de búsqueda -->
+            <div class="menu-profile-bar">
+                <div class="dropdown">
+                    <button class="menu-btn">
+                        <i class="fas fa-bars"></i>
+                        <span>Menú</span>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-optgroup">Categorías</div>
+                        <a href="categoriaaros.html">Aros</a>
+                        <a href="Categoriacollares.html">Collares</a>
+                        <a href="categoriaanillos.html">Anillos</a>
+                        <a href="categoriaparaniños.html">Para niños</a>
+                        <a href="categoriapulseras.html">Pulseras</a>
+                        <a href="categoriaotros.html">Otros</a>
+                        <a href="contacto.html">Contacto</a>
+                    </div>
+                </div>
+                <a href="perfil.html" class="profile-btn" style="text-decoration: none;">
+                    <button class="profile-btn" style="border: none; background: none; cursor: pointer; display: flex; align-items: center; gap: 8px; color: inherit; font: inherit;">
+                        <i class="fas fa-user"></i>
+                        <span>Mi perfil</span>
+                    </button>
+                </a>
+            </div>
+            <div class="search-bar">
+                <input type="text" name="Buscar" placeholder="Buscar accesorio...">
+                <input type="submit" value="Buscar">
+            </div>
+
+            <!-- FILTRO MEJORADO -->
+            <div class="filter-container">
+                <div class="filter-box">
+                    <select class="filter-select" id="filtro" multiple style="display: none;">
+                        <optgroup label="Material">
+                            <option value="Acero Quirurgico">Acero Quirúrgico</option>
+                            <option value="Acero Inoxidable">Acero Inoxidable</option>
+                            <option value="Acero Maciso">Acero Maciso</option>
+                            <option value="Acero Dorado">Acero Dorado</option>
+                            <option value="Resina">Resina</option>
+                        </optgroup>
+                        <optgroup label="Rango de Precio">
+                            <option value="Menos de $3.000">Menos de $3000</option>
+                            <option value="$2.000 - $5.000">$2000 - $5000</option>
+                            <option value="Mayor a $10.000">Mayor a $10.000</option>
+                        </optgroup>
+                    </select>
+                    
+                    <button type="button" class="custom-filter-btn" id="customFilterBtn">
+                        <span id="filterText">Filtrar</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    
+                    <div class="filter-options" id="filterOptions">
+                        <div class="option-group">
+                            <div class="option-group-title">
+                                <i class="fas fa-gem"></i> Material
+                            </div>
+                            <div class="option" data-value="Acero Quirurgico">Acero Quirúrgico</div>
+                            <div class="option" data-value="Acero Inoxidable">Acero Inoxidable</div>
+                            <div class="option" data-value="Acero Maciso">Acero Maciso</div>
+                            <div class="option" data-value="Acero Dorado">Acero Dorado</div>
+                            <div class="option" data-value="Resina">Resina</div>
+                        </div>
+                        
+                        <div class="option-group">
+                            <div class="option-group-title">
+                                <i class="fas fa-tag"></i> Rango de Precio
+                            </div>
+                            <div class="option" data-value="Menos de $3.000">Menos de $3000</div>
+                            <div class="option" data-value="$2.000 - $5.000">$2000 - $5000</div>
+                            <div class="option" data-value="Mayor a $10.000">Mayor a $10.000</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="selected-tags" id="selectedTags"></div>
+            </div>
+        </div>
+    </form>
+    
+    <div class="carousel-container">
+        <div class="carousel-slide">
+            <div class="carousel-item active">
+                <div class="product-display">
+                    <div class="product-image-container parallax-img">
+                        <span class="product-badge descuento">20% OFF</span>
+                        <span class="product-badge nuevo">NUEVO</span>
+                        <a href="#"><img src="https://i.pinimg.com/1200x/34/ce/11/34ce11422c8fee0138a4123a81c13d86.jpg" alt="Proyector Astronauta" class="product-image" /></a>
+                    </div>
+                    <div class="product-details">
+                        <h3><a href="#">Proyector Astronauta</a></h3>
+                        <div class="product-rating">⭐⭐⭐⭐☆ (4.5)</div>
+                        <p class="price"><span class="old-price">$25.000</span> $20.000</p>
+                        <div class="product-description">
+                            <p>Bellísimas nebulosas de todos los colores ¡y con música relajante!</p>
+                        </div>
+                        <div class="cta-box">
+                            <a href="Producto.html" class="shop-btn">COMPRAR</a>
+                            <a href="Producto.html" class="details-btn">VER DETALLES</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="product-display">
+                    <div class="product-image-container parallax-img">
+                        <span class="product-badge descuento">15% OFF</span>
+                        <span class="product-badge nuevo">POPULAR</span>
+                        <a href="#"><img src="https://i.pinimg.com/1200x/c0/5c/15/c05c154dc67d054755c6d509b87e5ed9.jpg" alt="Collar Corazón y Espada" class="product-image" /></a>
+                    </div>
+                    <div class="product-details">
+                        <h3><a href="#">Collar Corazón y Espada</a></h3>
+                        <div class="product-rating">⭐⭐⭐⭐⭐ (5.0)</div>
+                        <p class="price"><span class="old-price">$5.500</span> $4.800</p>
+                        <div class="product-description">
+                            <p>Perfecto para compartir con tu persona amada.</p>
+                        </div>
+                        <div class="cta-box">
+                            <a href="Collar espada y corazon.html" class="shop-btn">COMPRAR</a>
+                            <a href="Collar espada y corazon.html" class="details-btn">VER DETALLES</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="product-display">
+                    <div class="product-image-container parallax-img">
+                        <span class="product-badge descuento">10% OFF</span>
+                        <span class="product-badge nuevo">LIMITADO</span>
+                        <a href="#"><img src="https://i.pinimg.com/1200x/bc/02/df/bc02df6ef00342e09ecff9d119c0ede1.jpg" alt="Collar Giratorio" class="product-image" /></a>
+                    </div>
+                    <div class="product-details">
+                        <h3><a href="#">Collar Giratorio</a></h3>
+                        <div class="product-rating">⭐⭐⭐⭐ (4.2)</div>
+                        <p class="price"><span class="old-price">$16.500</span> $15.000</p>
+                        <div class="product-description">
+                            <p>Ideal para aquellos momentos de estrés.</p>
+                        </div>
+                        <div class="cta-box">
+                            <a href="collargiratorio.html" class="shop-btn">COMPRAR</a>
+                            <a href="collargiratorio.html" class="details-btn">VER DETALLES</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="luxury-nav prev" id="prevBtn">&#10094;</button>
+        <button class="luxury-nav next" id="nextBtn">&#10095;</button>
+
+        <div class="luxury-indicators">
+            <span class="luxury-indicator active" data-slide="0"></span>
+            <span class="luxury-indicator" data-slide="1"></span>
+            <span class="luxury-indicator" data-slide="2"></span>
+        </div>
+    </div>
+    
+    <!-- El resto de tu contenido permanece igual -->
+    <div class="main-content">
+        <!-- Sección 1: Destacado -->
+        <section class="seccion-carrusel">
+            <div class="titulo-con-lineas">
+                <div class="lado">
+                    <div class="corazones">💗 💗 💗 💗 💗 💗 💗 💗 💗 💗</div>
+                    <div class="linea"></div>
+                </div>
+                <h1 class="titulo-destacado">DESTACADO</h1>
+                <div class="lado">
+                    <div class="corazones">💗 💗 💗 💗 💗 💗 💗 💗 💗 💗</div>
+                    <div class="linea"></div>
+                </div>
+            </div>
+
+            <div class="carrusel-container">
+                <div class="barra-progreso"></div>
+                <button class="flecha izquierda" aria-label="Mover carrusel a la izquierda">❮</button>
+                <div class="carrusel-wrapper">
+                    <div class="carrusel">
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.pinimg.com/736x/ed/67/5c/ed675c0220efaf36a761e52eca8cda25.jpg" class="primera" alt="Producto 1" />
+                                <img src="https://i.pinimg.com/736x/51/ff/44/51ff441e4f170103ca585b0c46c1d74a.jpg" class="segunda" alt="Producto 1 atrás" />
+                            </div>
+                            <h3>COLLAR PIRF</h3>
+                            <div class="precio">$20.720</div>
+                            <div class="descuento">$18.312 TRANSFERENCIA</div>
+                            <div class="cuotas">3 CUOTAS $14.240</div>
+                            <a href="pirf.html" class="btn-rosa-destello">VER</a>
+                        </div>
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.pinimg.com/736x/5c/59/67/5c596710ff506ae829d10ecb643026b9.jpg" class="primera" alt="Producto 2" />
+                                <img src="https://i.pinimg.com/736x/5c/74/a9/5c74a9af694d41c58344a0413de5d126.jpg" class="segunda" alt="Producto 2 atrás" />
+                            </div>
+                            <h3>PULSERAS</h3>
+                            <div class="precio">$5.000</div>
+                            <div class="descuento">$4.000 TRANSFERENCIA</div>
+                            <div class="cuotas">3 CUOTAS $1.500</div>
+                            <a href="pulcera.html" class="btn-rosa-destello">VER</a>
+                        </div>
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.pinimg.com/736x/29/41/3c/29413c9405fe94c78ee346d07b04fbcc.jpg" class="primera" alt="Producto 3" />
+                                <img src="https://i.pinimg.com/736x/6d/9b/5a/6d9b5a9db15f01d470de66a043d99763.jpg" class="segunda" alt="Producto 3 atrás" />
+                            </div>
+                            <h3>COLLAR GIRATORIO</h3>
+                            <div class="precio">$10.000</div>
+                            <div class="descuento">$9.000 TRANSFERENCIA</div>
+                            <div class="cuotas">3 CUOTAS $3.500</div>
+                            <a href="collargiratorio.html" class="btn-rosa-destello">VER</a>
+                        </div>
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.pinimg.com/736x/3c/f2/fc/3cf2fc8635eb8e3b70145d19518cf14d.jpg" class="primera" alt="Producto 4" />
+                                <img src="https://i.pinimg.com/736x/68/d7/d7/68d7d79faa2a3c4946c10e53550e63f1.jpg" class="segunda" alt="Producto 4 atrás" />
+                            </div>
+                            <h3>ANILLO BELLA ROSA</h3>
+                            <div class="precio">$12.500</div>
+                            <div class="descuento">$11.000 TRANSFERENCIA</div>
+                            <div class="cuotas">3 CUOTAS $4.200</div>
+                            <a href="anillorosa.html" class="btn-rosa-destello">VER</a>
+                        </div>
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.imgur.com/14qhEpU.jpeg" class="primera" alt="Producto 4" />
+                                <img src="https://i.imgur.com/xplKG8U.jpeg" class="segunda" alt="Producto 4 atrás" />
+                            </div>
+                            <h3>AROS PLANETA</h3>
+                            <div class="precio">$5.000</div>
+                            <div class="descuento">4.000 TRANSFERENCIA</div>
+                            <div class="cuotas">3 CUOTAS $1.500</div>
+                            <a href="aros planetas.html" class="btn-rosa-destello">VER</a>
+                        </div>
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.imgur.com/rXk75X6.jpeg" class="primera" alt="Producto 4" />
+                                <img src="https://i.imgur.com/9irMDzl.jpeg" class="segunda" alt="Producto 4 atrás" />
+                            </div>
+                            <h3>AROS FRUTILLA</h3>
+                            <div class="precio">$6.000</div>
+                            <div class="descuento>$5.000 TRANSFERENCIA</div>
+                            <div class="cuotas">3 CUOTAS $2.300</div>
+                            <a href="aros frutilla.html" class="btn-rosa-destello">VER</a>
+                        </div>
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.pinimg.com/736x/4c/38/1f/4c381f0d8d5f2775aa2dee7a23375b4c.jpg" class="primera" alt="Producto 4" />
+                                <img src="https://i.pinimg.com/736x/c0/5c/15/c05c154dc67d054755c6d509b87e5ed9.jpg" class="segunda" alt="Producto 4 atrás" />
+                            </div>
+                            <h3>COLLAR ESPADA Y CORAZÓN</h3>
+                            <div class="precio">$16.000</div>
+                            <div class="descuento">$11.000 TRANSFERENCIA</div>
+                            <div class="cuotas">3 CUOTAS $6.000</div>
+                            <a href="Collar espada y corazon.html" class="btn-rosa-destello">VER</a>
+                        </div>
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.pinimg.com/736x/a2/0a/9f/a20a9fd823c21fb52ab35b2b35205dab.jpg" class="primera" alt="Producto 4" />
+                                <img src="https://i.pinimg.com/736x/93/4a/ea/934aea87fdfe3cb127721a1733330470.jpg" class="segunda" alt="Producto 4 atrás" />
+                            </div>
+                            <h3>COLLAR LUNA</h3>
+                            <div class="precio">$12.500</div>
+                            <div class="descuento">$11.000 TRANSFERENCIA</div>
+                            <div class="cuotas">3 CUOTAS $4.200</div>
+                            <a href="collar luna.html" class="btn-rosa-destello">VER</a>
+                        </div>
+                    </div>
+                </div>
+                <button class="flecha derecha" aria-label="Mover carrusel a la derecha">❯</button>
+            </div>
+        </section>
+
+        <!-- ... (el resto de tu contenido permanece igual) ... -->
+
+    </div>
+                    
+    
+
+        <!-- Sección 2: Novedades -->
+        <section class="seccion-carrusel">
+            <div class="titulo-con-lineas">
+                <div class="lado">
+                    <div class="corazones">💗 💗 💗 💗 💗 💗 💗 💗 💗 💗</div>
+                    <div class="linea"></div>
+                </div>
+                <h1 class="titulo-destacado">NOVEDADES</h1>
+                <div class="lado">
+                    <div class="corazones">💗 💗 💗 💗 💗 💗 💗 💗 💗 💗</div>
+                    <div class="linea"></div>
+                </div>
+            </div>
+
+            <div class="carrusel-container">
+                <div class="barra-progreso"></div>
+                <button class="flecha izquierda" aria-label="Mover carrusel a la izquierda">❮</button>
+                <div class="carrusel-wrapper">
+                    <div class="carrusel">
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.pinimg.com/736x/3b/01/41/3b01410ea2331041783755a61e13a414.jpg" class="primera" alt="Producto 1" />
+                                <img src="https://i.pinimg.com/736x/79/fd/6d/79fd6defc7a5643e2c46dd431f6f56a9.jpg" class="segunda" alt="Producto 1 atrás" />
+                            </div>
+                            <h3>ANILLO CORAZÓN</h3>
+                            <div class="precio">$4.000</div>
+                            <div class="descuento">$3.000 TRANSFERENCIA</div>
+                            <div class="cuotas">2 CUOTAS $2.100</div>
+                            <a href="anillo corazon.html" class="btn-rosa-destello">VER</a>
+                        </div>
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.pinimg.com/736x/34/e3/15/34e315ebdf278c14734ae58286d24678.jpg" class="primera" alt="Producto 2" />
+                                <img src="https://i.pinimg.com/736x/4c/df/79/4cdf7902f2ab07a8159138ebf989c52f.jpg" class="segunda" alt="Producto 2 atrás" />
+                            </div>
+                            <h3>CONJUNTO CORAZÓN</h3>
+                            <div class="precio">$29.000</div>
+                            <div class="descuento">$27000 TRANSFERENCIA</div>
+                            <div class="cuotas">3 CUOTAS $10.000</div>
+                            <a href="conjuntocorazon.html" class="btn-rosa-destello">VER</a>
+                        </div>
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.pinimg.com/736x/45/5d/68/455d68c175ec44189ab3fef85301fa45.jpg" class="primera" alt="Producto 3" />
+                                <img src="https://i.pinimg.com/736x/45/4a/73/454a7370c923b3629a8ef66720b34df2.jpg" class="segunda" alt="Producto 3 atrás" />
+                            </div>
+                            <h3>CONJUNTOS</h3>
+                            <div class="precio">$20.000</div>
+                            <div class="descuento">$17000 TRANSFERENCIA</div>
+                            <div class="cuotas">2 CUOTAS $12.000</div>
+                            <a href="conjunto.html" class="btn-rosa-destello">VER</a>
+                        </div>
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.imgur.com/h35Z6qQ.jpeg" class="primera" alt="Producto 4" />
+                                <img src="https://i.imgur.com/afkygt3.jpeg" class="segunda" alt="Producto 4 atrás" />
+                            </div>
+                            <h3>COLLAR DE LOS 100 TE AMO</h3>
+                            <div class="precio">$18.000</div>
+                            <div class="descuento">$17000 TRANSFERENCIA</div>
+                            <div class="cuotas">2 CUOTAS $9.200</div>
+                            <a href="corazon de los 100 te amo.html" class="btn-rosa-destello">VER</a>
+                        </div>
+                        
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.imgur.com/840ZRY2.jpeg" class="primera" alt="Producto 6" />
+                                <img src="https://i.imgur.com/Obt2ETD.jpeg" class="segunda" alt="Producto 6 atrás" />
+                            </div>
+                            <h3>AROS ESTRELLA</h3>
+                            <div class="precio">$5.500</div>
+                            <div class="descuento">$4.000 TRANSFERENCIA</div>
+                            <div class="cuotas">2 CUOTAS $3.900</div>
+                            <a href="aros estrella.html" class="btn-rosa-destello">VER</a>
+                        </div>
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.pinimg.com/736x/45/93/d3/4593d3bc03370dd861b6bf6db317f27c.jpg" class="primera" alt="Producto 7" />
+                                <img src="https://i.pinimg.com/736x/50/a5/d3/50a5d37ec1c923d846b12dcc447e8018.jpg" class="segunda" alt="Producto 7 atrás" />
+                            </div>
+                            <h3>COLLAR CEREZA</h3>
+                            <div class="precio">$12.000</div>
+                            <div class="descuento">$10.000 TRANSFERENCIA</div>
+                            <div class="cuotas">2 CUOTAS $7.900</div>
+                            <a href="collar.html" class="btn-rosa-destello">VER</a>
+                        </div>
+                    </div>
+                </div>
+                <button class="flecha derecha" aria-label="Mover carrusel a la derecha">❯</button>
+            </div>
+        </section>
+
+        <!-- Sección de ofertas -->
+        <section class="seccion-carrusel">
+            <div class="titulo-con-lineas">
+                <div class="lado">
+                    <div class="corazones">🔥 🔥 🔥 🔥 🔥 🔥 🔥 🔥 🔥 🔥</div>
+                    <div class="linea" style="background-color: #ff4500;"></div>
+                </div>
+                <h1 class="titulo-destacado" style="color: #ff4500;">OFERTAS</h1>
+                <div class="lado">
+                    <div class="corazones">🔥 🔥 🔥 🔥 🔥 🔥 🔥 🔥 🔥 🔥</div>
+                    <div class="linea" style="background-color: #ff4500;"></div>
+                </div>
+            </div>
+
+            <div class="carrusel-container">
+                <div class="barra-progreso"></div>
+                <button class="flecha izquierda" aria-label="Mover carrusel a la izquierda">❮</button>
+                <div class="carrusel-wrapper">
+                    <div class="carrusel">
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.pinimg.com/736x/3e/f9/f2/3ef9f29ea4b852706eee3fabaa4b6c5d.jpg" class="primera" alt="Producto 1" />
+                                <img src="https://i.pinimg.com/736x/5c/b9/1c/5cb91cd4a5e44b8710d9dad8f92ec19f.jpg" class="segunda" alt="Producto 1 atrás" />
+                            </div>
+                            <h3>AROS</h3>
+                            <div class="precio">$13.000</div>
+                            <div class="descuento">$7.000 TRANSFERENCIA</div>
+                            <div class="cuotas">3 CUOTAS $3.500</div>
+                            <a href="arosperla.html" class="btn-rosa-destello">VER</a>
+                        </div>
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.imgur.com/DnHHOzq.jpeg" class="primera" alt="Producto 2" />
+                                <img src="https://i.imgur.com/wcSVM4H.jpeg" class="segunda" alt="Producto 2 atrás" />
+                            </div>
+                            <h3>AROS GATITO</h3>
+                            <div class="precio">$5.000</div>
+                            <div class="descuento">$5.000 TRANSFERENCIA</div>
+                            <div class="cuotas">2 CUOTAS $3.500</div>
+                            <a href="aros gatito.html" class="btn-rosa-destello">VER</a>
+                        </div>
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.pinimg.com/736x/d2/3a/a2/d23aa269ebf0efac64168a9e0b9730fd.jpg" class="primera" alt="Producto 3" />
+                                <img src="https://i.pinimg.com/736x/36/cc/94/36cc9426ee692e35bac81517e55521d1.jpg" class="segunda" alt="Producto 3 atrás" />
+                            </div>
+                            <h3>CONJUNTO MARGARITA</h3>
+                            <div class="precio">$7.000</div>
+                            <div class="descuento">$6.000 TRANSFERENCIA</div>
+                            <div class="cuotas">2 CUOTAS $3.900</div>
+                            <a href="pulsera girasol.html" class="btn-rosa-destello">VER</a>
+                        </div>
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.pinimg.com/736x/86/d0/9b/86d09bcd36f978ccfbfcbd5cca19e78a.jpg" class="primera" alt="Producto 4" />
+                                <img src="https://i.pinimg.com/736x/28/9d/4d/289d4dcef6431f6d395ed88f0e4b4042.jpg" class="segunda" alt="Producto 4 atrás" />
+                            </div>
+                            <h3>COLLAR PERLITA</h3>
+                            <div class="precio">$10.000</div>
+                            <div class="descuento">$7.000 TRANSFERENCIA</div>
+                            <div class="cuotas">3 CUOTAS $3.500</div>
+                            <a href="collarperlita.html" class="btn-rosa-destello">VER</a>
+                        </div>
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.pinimg.com/736x/da/48/2b/da482b7bf9966df5ac2b80c1f539b2ab.jpg" class="primera" alt="Producto 5" />
+                                <img src="https://i.pinimg.com/736x/df/ca/82/dfca8256a0531f335a020d1fed28453e.jpg" class="segunda" alt="Producto 5 atrás" />
+                            </div>
+                            <h3>CONJUNTO ESTRELLA</h3>
+                            <div class="precio">$10.000</div>
+                            <div class="descuento">$7.000 TRANSFERENCIA</div>
+                            <div class="cuotas">3 CUOTAS $3.500</div>
+                            <a href="conjuntoestrella.html" class="btn-rosa-destello">VER</a>
+                        </div>
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.pinimg.com/736x/f1/7f/40/f17f40e4aef97598521ecf14ed5eb278.jpg" class="primera" alt="Producto 6" />
+                                <img src="https://i.pinimg.com/736x/21/e0/cf/21e0cf5f779ce32ddebbca6ff669e0db.jpg" class="segunda" alt="Producto 6 atrás" />
+                            </div>
+                            <h3>AROS CORAZÓN</h3>
+                            <div class="precio">$5.000</div>
+                            <div class="descuento">$5.000 TRANSFERENCIA</div>
+                            <div class="cuotas">3 CUOTAS $2.500</div>
+                            <a href="aroscorazon.html" class="btn-rosa-destello">VER</a>
+                        </div>
+                        <div class="producto">
+                            <div class="imagen-hover">
+                                <img src="https://i.pinimg.com/736x/a7/dc/85/a7dc85ced50d1d8f715d3186cd1782c7.jpg" class="primera" alt="Producto 7" />
+                                <img src="https://i.pinimg.com/736x/07/7a/62/077a629964dd7b5ed88c205206b0e37d.jpg" class="segunda" alt="Producto 7 atrás" />
+                            </div>
+                            <h3>AROS GOTITA</h3>
+                            <div class="precio">$3.000</div>
+                            <div class="descuento">$3.000 TRANSFERENCIA</div>
+                            <div class="cuotas">2 CUOTAS $1.900</div>
+                            <a href="AROSGOTITA.HTML" class="btn-rosa-destello">VER</a>
+                        </div>
+                    </div>
+                </div>
+                <button class="flecha derecha" aria-label="Mover carrusel a la derecha">❯</button>
+            </div>
+        </section>
+
+        <!-- Video section -->
+        <section class="video-section">
+            <video id="videoAutoPlay" width="100%" height="auto" muted playsinline preload="auto" style="display: block; border-radius: 12px;">
+                <source src="https://archive.org/download/video-in-dark-green-bright-yellow-modern-elegance-style/Video%20in%20Dark%20Green%20Bright%20Yellow%20Modern%20Elegance%20Style.mp4" type="video/mp4">
+                Tu navegador no soporta el video.
+            </video>
+        </section>
+
+        <!-- Vista de producto -->
+        <section class="vista-producto">
+            <!-- Galería vertical -->
+            <div style="flex: 1; min-width: 100px; display: flex; flex-direction: column; gap: 15px;">
+                <img src="https://i.pinimg.com/736x/f9/f7/da/f9f7dac20b293f58280f3a0364f7fe2c.jpg" style="width: 100px; height: auto; cursor: pointer;" onclick="cambiarImagen(this)">
+                <img src="https://i.pinimg.com/736x/f4/f7/1e/f4f71ee4aaa4f49d84dcea87b993cfc2.jpg" style="width: 100px; height: auto; cursor: pointer;" onclick="cambiarImagen(this)">
+                <img src="https://i.pinimg.com/736x/f1/e0/b7/f1e0b7dd0a7b5202204a731678d3b932.jpg" style="width: 100px; height: auto; cursor: pointer;" onclick="cambiarImagen(this)">
+                <img src="https://i.pinimg.com/736x/0d/21/e0/0d21e05f0bd882021e9c219886435f3a.jpg" style="width: 100px; height: auto; cursor: pointer;" onclick="cambiarImagen(this)">
+            </div>
+            
+            <!-- Imagen principal -->
+            <div style="flex: 2; min-width: 300px; display: flex; align-items: center; justify-content: center;">
+                <img id="imagen-principal" src="https://i.pinimg.com/736x/0d/21/e0/0d21e05f0bd882021e9c219886435f3a.jpg" style="width: 100%; max-width: 400px; border-radius: 10px;">
+            </div>
+
+            <!-- Cuadro de producto mejorado -->
+            <div class="producto-card">
+                <div class="neon-effect" id="neonEffect"></div>
+                
+                <div>
+                    <h2 style="color:#000; font-weight:800; margin:0 0 10px 0; font-size:20px; letter-spacing:0.5px">
+                        COLECCIÓN VERANO 2025
+                    </h2>
+                    <p style="color:#000; font-weight:600; margin:0 0 8px 0; font-size:16px;">LO VEO Y LO QUIERO</p>
+                    <p style="color:#666; font-size:13px; margin:0 0 15px 0;">CONJUNTO COMPLETO</p>
+                </div>
+
+                <p style="color:#000; font-size:24px; font-weight:bold; margin:15px 0;">$50.000</p>
+
+                <div class="cantidad-selector">
+                    <p style="margin-bottom: 10px; font-weight: bold;">CANTIDAD</p>
+                    <div class="cantidad-controls">
+                        <button class="cantidad-btn" onclick="updateQuantity('goldCollectionQuantity', -1)">-</button>
+                        <span class="cantidad" id="goldCollectionQuantity">1</span>
+                        <button class="cantidad-btn" onclick="updateQuantity('goldCollectionQuantity', 1)">+</button>
+                    </div>
+                </div>
+
+                <button class="add-to-cart-btn" onclick="addToCart()">
+                    <span style="position:relative; z-index:2;">AÑADIR AL CARRITO</span>
+                </button>
+            </div>
+        </section>
+    </div>
+                    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Productos</h3>
+                <ul class="footer-links">
+                    <li><a href="categoriaaros.html"><i class="fas fa-angle-right"></i> Aros</a></li>
+                    <li><a href="Categoriacollares.html"><i class="fas fa-angle-right"></i> Collares</a></li>
+                    <li><a href="categoriaanillos.html"><i class="fas fa-angle-right"></i> Anillos</a></li>
+                    <li><a href="categoria pulseras.html"><i class="fas fa-angle-right"></i> Pulseras</a></li>
+                    <li><a href="categoriaparaniños.html"><i class="fas fa-angle-right"></i> Para niños</a></li>
+                    <li><a href="categoriaotros.html"><i class="fas fa-angle-right"></i> Otros</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> loveoyloquier@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +54 29 8434-5678</p>
+                    <p><i class="fas fa-map-marker-alt"></i> General Roca, Argentina</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="nosotras-text">NOSOTRAS SOMOS</div>
+            <div class="creators">
+                <div class="creator">
+                    <span class="creator-name">MARINA</span>
+                </div>
+                <div class="creator">
+                    <span class="creator-name">LUCIA</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>

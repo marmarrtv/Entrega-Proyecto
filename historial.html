@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>INSTITUCIÓN TÉCNICA CET 1 - DEPÓSITO PAÑOL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="historial.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHMkFdS5MjAih-9F8gShzTPgT2usmaHqL7lJIcPF7JgdtliW-TqnEhRvWiJPJKMbN3etw&usqp=CAU" alt="Logo CET 1" class="logo-img">
+      <div class="logo-text">
+        INSTITUCIÓN TÉCNICA CET 1<br>
+        <span>General Roca - Río Negro</span>
+      </div>
+    </div>
+   
+    <h1>HISTORIAL PEDIDOS</h1>
+    <p>Sistema Integral de Gestión de Inventario</p>
+  </header>
+
+
+  <nav>
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+      <li><a href="mostrar.html"><i class="fas fa-list"></i> Mostrar</a></li>
+      <li><a href="cargar.html"><i class="fas fa-upload"></i> Cargar</a></li>
+      <li><a href="recargar.html"><i class="fas fa-sync-alt"></i> Recargar</a></li>
+      <li>
+        <a href="#"><i class="fas fa-clipboard-check"></i> Realizar Pedido <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+        <ul class="submenu">
+          <li><a href="herramientas.html"><i class="fas fa-tools"></i> Herramientas</a></li>
+          <li><a href="insumos.html"><i class="fas fa-box-open"></i> Insumos</a></li>
+          <li><a href="historial.html"><i class="fas fa-history"></i> Historial Pedidos</a></li>
+          <li><a href="graficos.html"><i class="fas fa-chart-pie"></i> Gráficos Insumos</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+
+  <main>
+    <h2>Consultar Pedidos por Fecha</h2>
+   
+    <label for="fechaConsulta">Seleccione la fecha:</label>
+    <input type="date" id="fechaConsulta">
+   
+    <button id="consultarBtn">Consultar Pedidos</button>
+    <button id="exportarBtn" class="export-button">Exportar a Excel</button>
+   
+    <div id="alertContainer"></div>
+   
+    <div id="resultados">
+      <table id="tablaPedidos">
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Profesor</th>
+            <th>Asignatura</th>
+            <th>Item</th>
+            <th>Cantidad</th>
+            <th>Hora</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <p id="sinResultados" class="no-data">Seleccione una fecha para ver los pedidos</p>
+    </div>
+  </main>
+
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-column footer-logo-column">
+          <div class="footer-logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHMkFdS5MjAih-9F8gShzTPgT2usmaHqL7lJIcPF7JgdtliW-TqnEhRvWiJPJKMbN3etw&usqp=CAU" alt="Logo CET 1">
+          </div>
+        </div>
+       
+         <div class="footer-column">
+          <h3 class="footer-title">Enlaces Rápidos</h3>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+            <li><a href="cargar.html"><i class="fas fa-chevron-right"></i> Cargar Inventario</a></li>
+            <li><a href="mostrar.html"><i class="fas fa-chevron-right"></i> Mostrar Inventario</a></li>
+            <li><a href="herramientas.html"><i class="fas fa-chevron-right"></i> Realizar pedido de herramientas</a></li>
+            <li><a href="insumos.html"><i class="fas fa-chevron-right"></i>Realizar pedido de insumos</a></li>
+            <li><a href="recargar.html"><i class="fas fa-chevron-right"></i> Recargar Insumos</a></li>
+            <li><a href="graficos.html"><i class="fas fa-chevron-right"></i> Gráficos</a></li>
+            <li><a href="historial.html"><i class="fas fa-chevron-right"></i> Historial de pedidos</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-title">Contacto</h3>
+          <ul class="footer-contact">
+            <li><i class="fas fa-phone"></i> 0298 442-3523</li>
+            <li><i class="fas fa-envelope"></i> practicaspanol@gmail.com</li>
+          </ul>
+        </div>
+      </div>
+     
+      <div class="footer-bottom">
+        <div class="footer-students">
+          <span>Proyecto realizado por:</span>
+          <div class="student-badges">
+            <span class="badge">Castro Marina</span>
+            <span class="badge">Kunz Lucia</span>
+            <span class="badge">Caceres Benjamin</span>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <p>&copy; 2025 Sistema de Inventario - Depósito Pañol. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </div>
+   
+    <!-- Elementos decorativos -->
+    <div class="footer-decoration">
+      <div class="square s1"></div>
+      <div class="square s2"></div>
+      <div class="square s3"></div>
+      <div class="square s4"></div>
+      <div class="square s5"></div>
+    </div>
+  </footer>
+
+
+  
+
+      <script src="historial.js"></script>
+
+</body>
+</html>

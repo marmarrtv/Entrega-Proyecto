@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mostrar Inventario</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="mostrar.css">
+</head>
+<body>
+  <!-- HEADER CON ANIMACIONES -->
+  <header>
+    <div class="logo-container">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHMkFdS5MjAih-9F8gShzTPgT2usmaHqL7lJIcPF7JgdtliW-TqnEhRvWiJPJKMbN3etw&usqp=CAU" alt="Logo CET 1" class="logo-img">
+      <div class="logo-text">
+        INSTITUCIÓN TÉCNICA CET 1<br>
+        <span>General Roca - Río Negro</span>
+      </div>
+    </div>
+   
+    <h1>MOSTRAR</h1>
+    <p>Sistema Integral de Gestión de Inventario</p>
+  </header>
+
+  <!-- NAV  -->
+  <nav>
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+      <li><a href="mostrar.html"><i class="fas fa-list"></i> Mostrar</a></li>
+      <li><a href="cargar.html"><i class="fas fa-upload"></i> Cargar</a></li>
+      <li><a href="recargar.html"><i class="fas fa-sync-alt"></i> Recargar</a></li>
+      <li>
+        <a href="#"><i class="fas fa-clipboard-check"></i> Realizar Pedido <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+        <ul class="submenu">
+          <li><a href="herramientas.html"><i class="fas fa-tools"></i> Herramientas</a></li>
+          <li><a href="insumos.html"><i class="fas fa-box-open"></i> Insumos</a></li>
+          <li><a href="historial.html"><i class="fas fa-history"></i> Historial Pedidos</a></li>
+          <li><a href="graficos.html"><i class="fas fa-chart-pie"></i> Gráficos Insumos</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <main>
+    <h2>Inventario Registrado</h2>
+
+    <!-- Buscador -->
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Buscar en el inventario...">
+      <button class="search-button" id="searchButton">Buscar</button>
+    </div>
+
+    <!-- Resultados de búsqueda -->
+    <div class="search-results" id="searchResults">
+      <h3>Resultados de la búsqueda</h3>
+      <table id="searchTable">
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>Fecha</th>
+            <th>Marca/Taller</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <p id="noResults" class="no-data">No se encontraron resultados</p>
+    </div>
+
+    <!-- Acordeón para Herramientas -->
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion('herramientas')">
+        <span>Herramientas</span>
+        <span class="badge" id="herramientasCount">0</span>
+      </div>
+      <div class="accordion-content" id="herramientasContent">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Cantidad</th>
+              <th>Fecha</th>
+              <th>Marca</th>
+            </tr>
+          </thead>
+          <tbody id="herramientasBody"></tbody>
+        </table>
+        <p id="noHerramientas" class="no-data">No hay herramientas registradas</p>
+      </div>
+    </div>
+
+    <!-- Acordeón para Insumos -->
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion('insumos')">
+        <span>Insumos</span>
+        <span class="badge" id="insumosCount">0</span>
+      </div>
+      <div class="accordion-content" id="insumosContent">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Cantidad</th>
+              <th>Fecha</th>
+              <th>Marca</th>
+            </tr>
+          </thead>
+          <tbody id="insumosBody"></tbody>
+        </table>
+        <p id="noInsumos" class="no-data">No hay insumos registrados</p>
+      </div>
+    </div>
+
+    <!-- Acordeón para Docentes -->
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion('docentes')">
+        <span>Docentes</span>
+        <span class="badge" id="docentesCount">0</span>
+      </div>
+      <div class="accordion-content" id="docentesContent">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Taller que imparte</th>
+            </tr>
+          </thead>
+          <tbody id="docentesBody"></tbody>
+        </table>
+        <p id="noDocentes" class="no-data">No hay docentes registrados</p>
+      </div>
+    </div>
+
+    <!-- Botones de acción en la parte inferior -->
+    <div class="action-buttons">
+      <button class="delete-button" id="deleteBtn">Eliminar Registro</button>
+      <button class="edit-button-main" id="editBtn">Editar Registro</button>
+      <button class="export-button" id="exportBtn">Exportar a Excel</button>
+    </div>
+  </main>
+
+ <!-- Modal para eliminar registros -->
+<div id="deleteModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-title">Eliminar Registro</span>
+      <span class="close">&times;</span>
+    </div>
+    
+    <div class="modal-body">
+      <!-- Paso 1: Seleccionar tipo de registro -->
+      <div id="deleteStep1" class="delete-step active">
+        <p>Seleccione el tipo de registro que desea eliminar:</p>
+        <select id="deleteTypeSelect" class="select-item">
+          <option value="" disabled selected>Seleccione un tipo</option>
+          <option value="Herramienta">Herramientas</option>
+          <option value="Insumo">Insumos</option>
+          <option value="Docente">Docentes</option>
+        </select>
+      </div>
+
+      <!-- Paso 2: Seleccionar registro específico -->
+      <div id="deleteStep2" class="delete-step">
+        <button id="backToStep1" class="back-button">← Volver</button>
+        
+        <div class="delete-search">
+          <input type="text" id="deleteSearchInput" class="delete-search-input" placeholder="Buscar registro...">
+        </div>
+        
+        <div class="delete-table-container">
+          <table class="delete-table">
+            <thead>
+              <tr>
+                <th>Seleccionar</th>
+                <th>Nombre</th>
+                <th>Detalles</th>
+              </tr>
+            </thead>
+            <tbody id="deleteTableBody"></tbody>
+          </table>
+        </div>
+        
+        <p id="noDeleteResults" class="no-data">No se encontraron registros</p>
+      </div>
+    </div>
+    
+    <div class="modal-footer">
+      <button id="cancelDelete" class="search-button">Cancelar</button>
+      <button id="nextStep" class="delete-button" style="display: none;">Siguiente</button>
+      <button id="confirmDelete" class="delete-button" style="display: none;">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para editar registros -->
+<div id="editModal" class="modal">
+  <div class="modal-content" style="max-width: 600px;">
+    <div class="modal-header">
+      <span class="modal-title">Editar Registro</span>
+      <span class="close" id="closeEditModal">&times;</span>
+    </div>
+    <div class="modal-body">
+      <form id="editForm">
+        <input type="hidden" id="editIndex">
+        <div class="form-group">
+          <label for="editTipo">Tipo:</label>
+          <select id="editTipo" class="select-item" required>
+            <option value="Herramienta">Herramienta</option>
+            <option value="Insumo">Insumo</option>
+            <option value="Docente">Docente</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="editNombre">Nombre:</label>
+          <input type="text" id="editNombre" class="select-item" required>
+        </div>
+        <div class="form-group" id="editDescripcionGroup">
+          <label for="editDescripcion">Descripción:</label>
+          <input type="text" id="editDescripcion" class="select-item">
+        </div>
+        <div class="form-group" id="editCantidadGroup">
+          <label for="editCantidad">Cantidad:</label>
+          <input type="number" id="editCantidad" class="select-item" min="0">
+        </div>
+        <div class="form-group" id="editFechaGroup">
+          <label for="editFecha">Fecha (solo lectura):</label>
+          <input type="date" id="editFecha" class="select-item" readonly>
+        </div>
+        <div class="form-group" id="editMarcaGroup">
+          <label for="editMarca">Marca:</label>
+          <input type="text" id="editMarca" class="select-item">
+        </div>
+        <div class="form-group" id="editTallerGroup" style="display: none;">
+          <label for="editTaller">Taller:</label>
+          <input type="text" id="editTaller" class="select-item">
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button id="cancelEdit" class="search-button">Cancelar</button>
+      <button id="saveEdit" class="export-button">Guardar Cambios</button>
+    </div>
+  </div>
+</div>
+<!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-column footer-logo-column">
+          <div class="footer-logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHMkFdS5MjAih-9F8gShzTPgT2usmaHqL7lJIcPF7JgdtliW-TqnEhRvWiJPJKMbN3etw&usqp=CAU" alt="Logo CET 1">
+          </div>
+        </div>
+       
+        <div class="footer-column">
+          <h3 class="footer-title">Enlaces Rápidos</h3>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+            <li><a href="cargar.html"><i class="fas fa-chevron-right"></i> Cargar Inventario</a></li>
+            <li><a href="mostrar.html"><i class="fas fa-chevron-right"></i> Mostrar Inventario</a></li>
+            <li><a href="herramientas.html"><i class="fas fa-chevron-right"></i> Realizar pedido de herramientas</a></li>
+            <li><a href="insumos.html"><i class="fas fa-chevron-right"></i>Realizar pedido de insumos</a></li>
+            <li><a href="recargar.html"><i class="fas fa-chevron-right"></i> Recargar Insumos</a></li>
+            <li><a href="graficos.html"><i class="fas fa-chevron-right"></i> Gráficos</a></li>
+            <li><a href="historial.html"><i class="fas fa-chevron-right"></i> Historial de pedidos</a></li>
+          </ul>
+        </div>
+       
+        <div class="footer-column">
+          <h3 class="footer-title">Contacto</h3>
+          <ul class="footer-contact">
+            <li><i class="fas fa-phone"></i> 0298 442-3523</li>
+            <li><i class="fas fa-envelope"></i> practicaspanol@gmail.com</li>
+          </ul>
+        </div>
+      </div>
+     
+      <div class="footer-bottom">
+        <div class="footer-students">
+          <span>Proyecto realizado por:</span>
+          <div class="student-badges">
+            <span class="badge">Castro Marina</span>
+            <span class="badge">Kunz Lucia</span>
+            <span class="badge">Caceres Benjamin</span>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <p>&copy; 2025 Sistema de Inventario - Depósito Pañol. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </div>
+   
+    <!-- Elementos decorativos -->
+    <div class="footer-decoration">
+      <div class="square s1"></div>
+      <div class="square s2"></div>
+      <div class="square s3"></div>
+      <div class="square s4"></div>
+      <div class="square s5"></div>
+    </div>
+  </footer>
+      <script src="mostrar.js"></script>
+
+</body>
+</html>
