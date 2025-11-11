@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>INSTITUCIÓN TÉCNICA CET 1 - DEPÓSITO PAÑOL</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="historial.css">
-  
+  <title>INSTITUCIÓN TÉCNICA CET 1 - HISTORIAL COMPLETO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="historial.css">
 </head>
 <body>
   <header>
@@ -23,7 +21,6 @@
     <h1>HISTORIAL PEDIDOS</h1>
     <p>Sistema Integral de Gestión de Inventario</p>
   </header>
-
 
   <nav>
     <ul>
@@ -43,36 +40,80 @@
     </ul>
   </nav>
 
-
   <main>
-    <h2>Consultar Pedidos por Fecha</h2>
-   
-    <label for="fechaConsulta">Seleccione la fecha:</label>
-    <input type="date" id="fechaConsulta">
-   
-    <button id="consultarBtn">Consultar Pedidos</button>
-    <button id="exportarBtn" class="export-button">Exportar a Excel</button>
+    <h2>Consultar Historial de Pedidos</h2>
+    
+    <div class="periodo-exportacion">
+      <label for="fechaConsulta">Seleccione la fecha:</label>
+      <input type="date" id="fechaConsulta">
+      
+      <label for="periodoExportacion">Exportar últimos:</label>
+      <select id="periodoExportacion">
+        <option value="2">2 meses</option>
+        <option value="4">4 meses</option>
+      </select>
+      
+      <button id="consultarBtn">Consultar Pedidos</button>
+      <button id="exportarBtn" class="export-button">Exportar a Excel</button>
+    </div>
    
     <div id="alertContainer"></div>
+    
+    <div id="resumenContainer" class="resumen-pedidos" style="display: none;">
+      <div class="resumen-card herramientas">
+        <h4>Pedidos de Herramientas</h4>
+        <div class="cantidad" id="totalHerramientas">0</div>
+      </div>
+      <div class="resumen-card insumos">
+        <h4>Pedidos de Insumos</h4>
+        <div class="cantidad" id="totalInsumos">0</div>
+      </div>
+      <div class="resumen-card">
+        <h4>Total General</h4>
+        <div class="cantidad" id="totalGeneral">0</div>
+      </div>
+    </div>
    
-    <div id="resultados">
-      <table id="tablaPedidos">
-        <thead>
-          <tr>
-            <th>Tipo</th>
-            <th>Profesor</th>
-            <th>Asignatura</th>
-            <th>Item</th>
-            <th>Cantidad</th>
-            <th>Hora</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+    <div id="resultados" class="tablas-container">
+      <div class="tabla-seccion" id="seccionHerramientas" style="display: none;">
+        <h3><i class="fas fa-tools"></i> Pedidos de Herramientas</h3>
+        <table id="tablaHerramientas">
+          <thead>
+            <tr>
+              <th>Profesor</th>
+              <th>Asignatura</th>
+              <th>Herramienta</th>
+              <th>Cantidad</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p id="sinHerramientas" class="no-data" style="display: none;">No hay pedidos de herramientas para esta fecha</p>
+      </div>
+      
+      <div class="tabla-seccion" id="seccionInsumos" style="display: none;">
+        <h3><i class="fas fa-box-open"></i> Pedidos de Insumos</h3>
+        <table id="tablaInsumos">
+          <thead>
+            <tr>
+              <th>Profesor</th>
+              <th>Asignatura</th>
+              <th>Insumo</th>
+              <th>Cantidad</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p id="sinInsumos" class="no-data" style="display: none;">No hay pedidos de insumos para esta fecha</p>
+      </div>
+      
       <p id="sinResultados" class="no-data">Seleccione una fecha para ver los pedidos</p>
     </div>
   </main>
-
 
   <footer>
     <div class="footer-container">
@@ -130,10 +171,6 @@
     </div>
   </footer>
 
-
-  
-
-      <script src="historial.js"></script>
-
+  <script src="historial.js"></script>
 </body>
 </html>

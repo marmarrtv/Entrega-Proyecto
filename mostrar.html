@@ -62,10 +62,9 @@
             <th>Cantidad</th>
             <th>Fecha</th>
             <th>Marca/Taller</th>
-            <th>Acciones</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody id="searchTableBody"></tbody>
       </table>
       <p id="noResults" class="no-data">No se encontraron resultados</p>
     </div>
@@ -77,18 +76,20 @@
         <span class="badge" id="herramientasCount">0</span>
       </div>
       <div class="accordion-content" id="herramientasContent">
-        <table>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Descripción</th>
-              <th>Cantidad</th>
-              <th>Fecha</th>
-              <th>Marca</th>
-            </tr>
-          </thead>
-          <tbody id="herramientasBody"></tbody>
-        </table>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Fecha</th>
+                <th>Marca</th>
+              </tr>
+            </thead>
+            <tbody id="herramientasBody"></tbody>
+          </table>
+        </div>
         <p id="noHerramientas" class="no-data">No hay herramientas registradas</p>
       </div>
     </div>
@@ -100,18 +101,20 @@
         <span class="badge" id="insumosCount">0</span>
       </div>
       <div class="accordion-content" id="insumosContent">
-        <table>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Descripción</th>
-              <th>Cantidad</th>
-              <th>Fecha</th>
-              <th>Marca</th>
-            </tr>
-          </thead>
-          <tbody id="insumosBody"></tbody>
-        </table>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Fecha</th>
+                <th>Marca</th>
+              </tr>
+            </thead>
+            <tbody id="insumosBody"></tbody>
+          </table>
+        </div>
         <p id="noInsumos" class="no-data">No hay insumos registrados</p>
       </div>
     </div>
@@ -123,15 +126,17 @@
         <span class="badge" id="docentesCount">0</span>
       </div>
       <div class="accordion-content" id="docentesContent">
-        <table>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Taller que imparte</th>
-            </tr>
-          </thead>
-          <tbody id="docentesBody"></tbody>
-        </table>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Taller que imparte</th>
+              </tr>
+            </thead>
+            <tbody id="docentesBody"></tbody>
+          </table>
+        </div>
         <p id="noDocentes" class="no-data">No hay docentes registrados</p>
       </div>
     </div>

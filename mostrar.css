@@ -1,5 +1,4 @@
-
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
    
     :root {
       --primary-color: #0059b3;
@@ -862,13 +861,6 @@
   background-color: #bd5908ff;
 }
 
-/* Estilos para botones de editar individuales */
- 
-
-.edit-button:hover {
-  background-color: #e97313ff;
-}
-
 /* Badge con color azul oscuro */
 .badge {
   background-color: #003366;
@@ -903,11 +895,47 @@ header {
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
-  position: sticky;
-  bottom: 0;
-  background: white;
-  padding: 15px 0;
-  z-index: 100;
+  gap: 10px;
+}
+
+/* Estilos para la tabla de búsqueda */
+.search-results .table-container {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Estilos para las tablas de acordeón */
+.table-container {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+/* Estilos para el modal de edición */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #004080;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-group input[readonly] {
+  background-color: #f5f5f5;
+  color: #666;
 }
 
 /* Ocultar columna de acciones en las tablas principales */
@@ -946,147 +974,6 @@ table td:nth-child(5) { width: 25%; }
 ::-webkit-scrollbar-thumb:hover {
   background: #0059b3;
 }
-
-
-
-
-
-
-
-/* Estilos para el modal con scroll general */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
-  overflow: auto; /* Permite scroll en el modal completo */
-}
-
-.modal-content {
-  background-color: white;
-  margin: 5% auto; /* Reducido para mejor visualización con scroll */
-  padding: 20px;
-  border-radius: 5px;
-  width: 80%;
-  max-width: 500px;
-  max-height: 85vh; /* Altura máxima para que entre en pantalla */
-  overflow-y: auto; /* Scroll en el contenido del modal */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  position: relative;
-}
-
-/* Eliminar el scroll de las tablas internas y ajustar alturas */
-.delete-table-container {
-  max-height: none; /* Quitar altura máxima */
-  overflow-y: visible; /* Quitar scroll interno */
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-}
-
-.delete-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.delete-table th {
-  background-color: #f2f2f2;
-  position: sticky;
-  top: 0;
-}
-
-.delete-table tr:hover {
-  background-color: #f5f5f5;
-}
-
-.delete-table tr.selected {
-  background-color: #d4edff;
-}
-
-/* Ajustar el modal de edición para que también tenga scroll */
-.modal-content[style*="max-width: 600px"] {
-  max-width: 600px;
-  max-height: 85vh;
-  overflow-y: auto;
-}
-
-/* Asegurar que el footer del modal sea visible */
-.modal-footer {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  padding-top: 15px;
-  border-top: 1px solid #eee;
-  margin-top: 15px;
-  position: sticky;
-  bottom: 0;
-  background: white;
-  z-index: 10;
-}
-
-/* Ajustar el cuerpo del modal para el scroll */
-.modal-body {
-  margin-bottom: 20px;
-  max-height: calc(85vh - 150px); /* Ajustar altura considerando header y footer */
-  overflow-y: visible; /* No scroll interno, dejar que el modal general maneje el scroll */
-}
-
-/* Scrollbar personalizada para los modales */
-.modal-content::-webkit-scrollbar {
-  width: 8px;
-}
-
-.modal-content::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
-}
-
-.modal-content::-webkit-scrollbar-thumb {
-  background: #0073e6;
-  border-radius: 4px;
-}
-
-.modal-content::-webkit-scrollbar-thumb:hover {
-  background: #0059b3;
-}
-
-/* Ajustar los pasos de eliminación para que fluyan con el scroll */
-.delete-step {
-  display: none;
-  min-height: auto; /* Quitar altura mínima fija */
-}
-
-.delete-step.active {
-  display: block;
-}
-
-/* Ajustar la tabla dentro del modal para que sea responsive */
-.delete-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.delete-table th,
-.delete-table td {
-  padding: 8px;
-  text-align: left;
-  border: 1px solid #ddd;
-}
-
-/* Asegurar que los botones sean siempre visibles */
-.modal-footer {
-  position: sticky;
-  bottom: 0;
-  background: white;
-  padding: 15px 0 0 0;
-  margin-top: 20px;
-}
-
-
-
 
 /* Estilos para el modal con scroll separado */
 .modal {
